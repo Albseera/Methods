@@ -11,24 +11,19 @@ public class Main {
     /////////////////////////////////////////////////////////
     public static void task1() {
         System.out.println("Задача 1");
-        int year = 2020;
-        leapYear(year);
+        int year = 2024;
+        ChekleapYear(year);
     }
 
-    public static void leapYear(int year) {
+    public static void ChekleapYear(int year) {
 
         int chekYear4 = year % 4;
         int chekYear100 = year % 100;
         int chekYear400 = year % 400;
 
-        if (chekYear4 == 0 || chekYear400 == 0) {
+        if (chekYear4 == 0 && chekYear100 != 0 || chekYear400 == 0) {
 
-            if (chekYear100 != 0) {
-                System.out.printf("Год %d является высокосным %n", year);
-            } else {
-                System.out.printf("Год %d является не высокосным %n", year);
-
-            }
+            System.out.printf("Год %d является высокосным %n", year);
         } else {
             System.out.printf("Год %d является не высокосным %n", year);
         }
@@ -38,7 +33,7 @@ public class Main {
     //////////////////////////////////////////////////////////
     public static void task2() {
         System.out.println("Задача 2");
-        int clientDeviceYear = LocalDate.now().getYear();// Нужна соответсвующая библиотека
+        int clientDeviceYear = LocalDate.now().getYear();
         // int clientDeviceYear =2015;
         int clientsOS = 1;
         chekApp(clientDeviceYear, clientsOS);
@@ -64,12 +59,15 @@ public class Main {
     //////////////////////////////////////////////////
     public static void task3() {
         System.out.println("Задача 3");
-        int deliveryDistance = 95;
-        System.out.println("Потребуется дней: " + countDeliveryDay(deliveryDistance));
-
+        int deliveryDistance = 110;
+        if(deliveryDistance>100){
+            System.out.println("Доставки нет");
+        }else {
+            System.out.println("Потребуется дней: " + getDeliveryDay(deliveryDistance));
+        }
     }
 
-    public static int countDeliveryDay(int deliveryDistance) {
+    public static int getDeliveryDay(int deliveryDistance) {
 
         int deliveryDay = 0;
 
